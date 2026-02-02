@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工入职引导</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .welcome-message {
+            text-align: center;
+            font-size: 18px;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #eef4ff;
+            border-radius: 5px;
+        }
+
+        .step-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .step-line {
+            position: absolute;
+            top: 30px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background-color: #ccc;
+            z-index: 1;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 30%;
+        }
+
+        .step-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #2c5aa0;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 24px;
+            color: #2c5aa0;
+            margin: 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2c5aa0;
+        }
+
+        .content-section {
+            margin: 20px 0;
+        }
+
+        .link-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .link-style {
+            display: inline-block;
+            color: #2c5aa0;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #2c5aa0;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .link-style:hover {
+            background-color: #2c5aa0;
+            color: white;
+        }
+
+        .tips-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .tips-list li {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .materials-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+
+        .materials-list li {
+            margin: 12px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .materials-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        .next-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #2c5aa0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 30px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover {
+            background-color: #1d4a8a;
+        }
+
+        .footer-message {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #eef4ff;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .step-container {
+                flex-direction: column;
+            }
+            
+            .step-line {
+                display: none;
+            }
+            
+            .step-item {
+                width: 100%;
+                margin: 15px 0;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .page-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page1">
+        <div class="welcome-message">欢迎加入嗨亚！</div>
+        
+        <h1 class="page-title">入职流程指引</h1>
+        
+        <div class="step-container">
+            <div class="step-line"></div>
+            <div class="step-item">
+                <div class="step-circle">1</div>
+                <div class="step-text">扫描花名册二维码</div>
+            </div>
+            <div class="step-item">
+                <div class="step-circle">2</div>
+                <div class="step-text">提交入职材料</div>
+            </div>
+            <div class="step-item">
+                <div class="step-circle">3</div>
+                <div class="step-text">签署合同</div>
+            </div>
+        </div>
+        
+        <button class="next-button" onclick="showPage2()">我已知晓，下一步</button>
+    </div>
+
+    <div class="container" id="page2" style="display:none;">
+        <h1 class="page-title">一、填写花名册</h1>
+        
+        <div class="content-section">
+            <p style="text-align:center; font-size:16px; margin:15px 0;">点击下方链接填写花名册</p>
+            
+            <div class="link-container">
+                <a href="https://f.wps.cn/g/PJKCRIH9?flowT=1770032774095&flowSign=596e198201&flow=flow" 
+                   target="_blank" 
+                   class="link-style">
+                    填写花名册链接
+                </a>
+            </div>
+            
+            <ul class="tips-list">
+                <li>身份证号最后一位为X的，请输入大写的X</li>
+                <li>现住址填写具体到门牌号，例如"海南省三亚市天涯区建港新城10栋13楼1305"</li>
+                <li>公司发薪银行为交通银行，请提交本人交通银行卡信息，银行卡号请不要用空格隔开</li>
+            </ul>
+            
+            <p style="text-align:center; font-size:14px; color:#666; margin-top:20px;">
+                花名册内容填写不多，大约3分钟就能填写完成，请您于今日内完成花名册的填写！
+            </p>
+        </div>
+        
+        <button class="next-button" onclick="showPage3()">已完成花名册填写，下一步</button>
+    </div>
+
+    <div class="container" id="page3" style="display:none;">
+        <h1 class="page-title">二、准备入职材料</h1>
+        
+        <div class="content-section">
+            <p style="font-size:16px; text-align:center; margin:15px 0;">
+                请提前准备入职材料并耐心等待入职材料提交的通知短信
+            </p>
+            
+            <ul class="materials-list">
+                <li>彩色证件照(电子版)</li>
+                <li>学历证书、学信网学历证明,相关职称证件(扫描或拍照)</li>
+                <li>二代身份证原件及其正反面(扫描或拍照)</li>
+                <li>与原单位解除劳动关系的证明文件(扫描或拍照)</li>
+                <li>交通银行卡复印件(扫描或拍照)</li>
+                <li>
+                    开具无犯罪记录证明(扫描或拍照)。海南户籍可在"海易办"搜索"无犯罪记录证明"，
+                    在"服务"处选择"出具无犯罪记录证明"；非海南户口及海南居留证人员可以联系户口所在地派出所办理或网上搜索开具方式。
+                    无犯罪证明开具需要2~3天审核时间，请尽快申请开具！
+                </li>
+            </ul>
+            
+            <div class="footer-message">
+                如有任何疑问请咨询欢迎咨询嗨亚24小时智能客户服务助手<br>
+                <a href="https://work.weixin.qq.com/kfid/kfcae366b0c5ada72c" 
+                   target="_blank" 
+                   style="color:#2c5aa0; text-decoration:underline;">
+                    嗨亚24小时智能客户服务助手
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage2() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        }
+
+        function showPage3() {
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
