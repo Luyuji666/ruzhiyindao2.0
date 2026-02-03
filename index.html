@@ -10,74 +10,94 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
             background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: white;
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        
-        .welcome {
+
+        .page {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        h1 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 18px;
-        }
-        
-        .step-flow {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 24px;
             margin-bottom: 30px;
-            flex-wrap: wrap;
+            color: #333;
         }
-        
-        .step-item {
+
+        .process-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .process-steps {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 30%;
-            min-width: 100px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
-        
-        .step-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+
+        .step {
+            flex: 1;
+            min-width: 150px;
+            margin: 10px;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff;
+            font-size: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .step:not(:last-child)::after {
+                content: "";
+            }
+            
+            .step {
+                margin-bottom: 20px;
+            }
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
             background-color: #007bff;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
+            border-radius: 50%;
+            line-height: 30px;
             margin-bottom: 10px;
         }
-        
-        .step-line {
-            position: absolute;
-            height: 2px;
-            background-color: #007bff;
-            width: 20%;
-            top: 25px;
-            z-index: -1;
-        }
-        
-        .step-text {
-            font-size: 14px;
-            text-align: center;
-            color: #333;
-        }
-        
-        .btn-next {
+
+        .btn {
             display: block;
-            width: 100%;
-            max-width: 200px;
+            width: 200px;
             margin: 30px auto;
             padding: 12px 20px;
             background-color: #007bff;
@@ -88,217 +108,150 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        
-        .btn-next:hover {
+
+        .btn:hover {
             background-color: #0056b3;
         }
-        
-        .page {
-            display: none;
-        }
-        
-        .active-page {
-            display: block;
-        }
-        
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 20px 0 15px;
-            color: #333;
-        }
-        
-        .link-container {
-            margin: 20px 0;
-        }
-        
-        .link-hint {
-            display: block;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: #333;
-        }
-        
-        .wps-link {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: #e7f3ff;
-            border: 1px solid #007bff;
-            border-radius: 5px;
+
+        .link {
             color: #007bff;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .link:hover {
+            color: #0056b3;
+        }
+
+        .info-text {
+            font-size: 14px;
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
             margin: 15px 0;
-            text-align: center;
-            word-break: break-all;
-        }
-        
-        .wps-link:hover {
-            background-color: #cce6ff;
-        }
-        
-        .fill-tips {
-            background-color: #fffde7;
             border-left: 4px solid #ffc107;
-            padding: 15px;
+        }
+
+        ul {
+            padding-left: 20px;
             margin: 15px 0;
-            font-size: 14px;
         }
-        
-        .material-list {
-            list-style-type: none;
-            padding: 0;
+
+        li {
+            margin-bottom: 10px;
         }
-        
-        .material-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-            font-size: 14px;
+
+        .center-text {
+            text-align: center;
+            font-size: 16px;
         }
-        
-        .material-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .contact-info {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-        }
-        
-        .contact-link {
-            display: block;
-            margin-top: 10px;
-            color: #007bff;
-            text-decoration: none;
-        }
-        
-        .contact-link:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 600px) {
-            .step-item {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            .step-line {
-                display: none;
-            }
-            
-            .step-flow {
-                position: relative;
-            }
-            
-            .step-flow::after {
-                content: '';
-                position: absolute;
-                left: 25px;
-                top: 55px;
-                bottom: 55px;
-                width: 2px;
-                background-color: #007bff;
-            }
-            
-            .step-item:not(:last-child) {
-                margin-bottom: 40px;
-            }
-            
-            .btn-next {
-                width: 100%;
-                max-width: none;
-            }
+
+        .warning {
+            color: #dc3545;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="welcome">欢迎加入嗨亚！</div>
-        
-        <!-- 首页 -->
-        <div id="page1" class="page active-page">
-            <h2 style="text-align: center; margin-bottom: 20px;">入职流程</h2>
-            <div class="step-flow">
-                <div class="step-item">
-                    <div class="step-circle">1</div>
-                    <div class="step-text">扫描花名册二维码</div>
+        <!-- 第一页：首页 -->
+        <div id="page1" class="page active">
+            <h1>欢迎加入嗨亚！</h1>
+            
+            <div class="process-container">
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div>扫描花名册二维码</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div>提交入职材料</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div>签署合同</div>
+                    </div>
                 </div>
-                <div class="step-item">
-                    <div class="step-circle">2</div>
-                    <div class="step-text">提交入职材料</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-circle">3</div>
-                    <div class="step-text">签署合同</div>
-                </div>
+                
+                <button class="btn" onclick="nextPage()">我已知晓，下一步</button>
             </div>
-            <button class="btn-next" onclick="showPage(2)">我已知晓，下一步</button>
         </div>
-        
-        <!-- 第二页：花名册填写 -->
+
+        <!-- 第二页：填写花名册 -->
         <div id="page2" class="page">
-            <h2 class="section-title">一、填写花名册</h2>
-            <div class="link-container">
-                <span class="link-hint">点击下方链接填写花名册：</span>
-                <a href="https://f.wps.cn/g/PJKCRIH9?flowT=1770032774095&flowSign=596e198201&flow=flow" 
-                   target="_blank" 
-                   class="wps-link">
-                    https://f.wps.cn/g/PJKCRIH9?flowT=1770032774095&flowSign=596e198201&flow=flow
-                </a>
+            <h1>一、填写花名册</h1>
+            
+            <p class="info-text">点击下方链接填写花名册：</p>
+            <a href="https://f.wps.cn/g/PJKCRIH9?flowT=1770032774095&flowSign=596e198201&flow=flow" target="_blank" class="link">填写花名册</a>
+            
+            <div class="highlight">
+                <p class="info-text"><span class="warning">重要提示：</span></p>
+                <ul>
+                    <li>身份证号最后一位为X的，请输入大写的X。</li>
+                    <li>现住址填写具体到门牌号，例如"海南省三亚市天涯区建港新城10栋13楼1305"。</li>
+                    <li>公司发薪银行为交通银行，请提交本人交通银行卡信息，银行卡号请不要用空格隔开。</li>
+                </ul>
             </div>
             
-            <div class="fill-tips">
-                <p><strong>填写提示：</strong></p>
-                <p>• 身份证号最后一位为X的，请输入大写的X。</p>
-                <p>• 现住址填写具体到门牌号，例如“海南省三亚市天涯区建港新城10栋13楼1305”。</p>
-                <p>• 公司发薪银行为交通银行，请提交本人交通银行卡信息，银行卡号请不要用空格隔开。</p>
-            </div>
+            <p class="info-text">花名册内容填写不多，大约3分钟就能填写完成，请您于今日内完成花名册的填写！</p>
             
-            <div style="margin: 20px 0; font-size: 14px; color: #666;">
-                花名册内容填写不多，大约3分钟就能填写完成，请您于今日内完成花名册的填写！
-            </div>
-            
-            <button class="btn-next" onclick="showPage(3)">已填写，继续下一步</button>
+            <button class="btn" onclick="nextPage()">已完成填写，下一步</button>
         </div>
-        
-        <!-- 第三页：入职材料准备 -->
+
+        <!-- 第三页：准备入职材料 -->
         <div id="page3" class="page">
-            <h2 class="section-title">二、准备入职材料</h2>
-            <p style="font-size: 14px; margin-bottom: 15px;">请提前准备入职材料，耐心等待通知提交材料的短信</p>
+            <h1>二、准备入职材料</h1>
             
-            <ul class="material-list">
+            <p class="info-text">请确认已填写上页花名册信息！若已填写完成，请提前准备以下入职材料，耐心等待通知提交材料的短信。</p>
+            
+            <ul>
                 <li>彩色证件照(电子版)</li>
                 <li>学历证书、学信网学历证明,相关职称证件(扫描或拍照)</li>
                 <li>二代身份证原件及其正反面(扫描或拍照)</li>
                 <li>与原单位解除劳动关系的证明文件(扫描或拍照)</li>
                 <li>交通银行卡复印件(扫描或拍照)</li>
-                <li>开具无犯罪记录证明(扫描或拍照)。海南户籍可在"海易办"搜索"无犯罪记录证明"，在"服务"处选择"出具无犯罪记录证明"；非海南户口及海南居留证人员可以联系户口所在地派出所办理或网上搜索开具方式。无犯罪证明开具需要2~3天审核时间，请尽快申请开具！</li>
                 <li>征信报告</li>
+                <li>开具无犯罪记录证明(扫描或拍照)。海南户籍可在"海易办"搜索"无犯罪记录证明"，在"服务"处选择"出具无犯罪记录证明"；非海南户口及海南居留证人员可以联系户口所在地派出所办理或网上搜索开具方式。无犯罪证明开具需要2~3天审核时间，请尽快申请开具！</li>
             </ul>
             
-            <div class="contact-info">
-                <p>如有任何疑问欢迎咨询嗨亚24小时智能客户服务助手</p>
-                <a href="https://work.weixin.qq.com/kfid/kfcae366b0c5ada72c" 
-                   target="_blank" 
-                   class="contact-link">
-                    https://work.weixin.qq.com/kfid/kfcae366b0c5ada72c
-                </a>
-            </div>
+            <p class="info-text">如有任何疑问欢迎咨询嗨亚24小时智能客户服务助手</p>
+            <a href="https://work.weixin.qq.com/kfid/kfcae366b0c5ada72c" target="_blank" class="link">咨询在线客服</a>
         </div>
     </div>
 
     <script>
-        function showPage(pageNumber) {
-            // 隐藏所有页面
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active-page');
-            });
+        function nextPage() {
+            // 获取当前活动页面
+            const pages = document.querySelectorAll('.page');
+            let currentPageIndex = -1;
             
-            // 显示目标页面
-            document.getElementById(`page${pageNumber}`).classList.add('active-page');
+            for (let i = 0; i < pages.length; i++) {
+                if (pages[i].classList.contains('active')) {
+                    currentPageIndex = i;
+                    break;
+                }
+            }
+            
+            // 隐藏当前页面
+            pages[currentPageIndex].classList.remove('active');
+            
+            // 显示下一页（如果存在）
+            if (currentPageIndex + 1 < pages.length) {
+                pages[currentPageIndex + 1].classList.add('active');
+            }
         }
+        
+        // 初始化页面状态
+        window.onload = function() {
+            // 设置第一页为活跃状态
+            document.getElementById('page1').classList.add('active');
+        };
     </script>
 </body>
 </html>
