@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             line-height: 1.6;
         }
@@ -21,74 +21,66 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: white;
             min-height: 100vh;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .page {
             display: none;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        .active {
+        .page.active {
             display: block;
         }
 
         h1 {
             text-align: center;
             font-size: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
             color: #333;
         }
 
         .process-container {
             text-align: center;
-            margin-bottom: 40px;
+            margin: 30px 0;
         }
 
         .process-steps {
             display: flex;
             justify-content: space-around;
+            align-items: flex-start;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            gap: 15px;
         }
 
         .step {
             flex: 1;
             min-width: 150px;
-            margin: 10px;
             padding: 15px;
-            background-color: #e8f4fd;
+            background-color: #e3f2fd;
             border-radius: 8px;
             text-align: center;
-            position: relative;
-        }
-
-        .step:not(:last-child)::after {
-            content: "→";
-            position: absolute;
-            right: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #007bff;
-            font-size: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .step:not(:last-child)::after {
-                content: "";
-            }
-            
-            .step {
-                margin-bottom: 20px;
-            }
+            margin: 0 10px;
         }
 
         .step-number {
             display: inline-block;
             width: 30px;
             height: 30px;
-            background-color: #007bff;
+            background-color: #2196f3;
             color: white;
             border-radius: 50%;
             line-height: 30px;
@@ -97,10 +89,11 @@
 
         .btn {
             display: block;
-            width: 200px;
-            margin: 30px auto;
+            width: 100%;
+            max-width: 200px;
+            margin: 30px auto 0;
             padding: 12px 20px;
-            background-color: #007bff;
+            background-color: #2196f3;
             color: white;
             border: none;
             border-radius: 5px;
@@ -110,50 +103,88 @@
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #1976d2;
         }
 
-        .link {
-            color: #007bff;
+        .link-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .custom-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e3f2fd;
+            border: 2px solid #2196f3;
+            color: #2196f3;
             text-decoration: none;
-            transition: color 0.3s;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: all 0.3s;
         }
 
-        .link:hover {
-            color: #0056b3;
+        .custom-link:hover {
+            background-color: #bbdefb;
+            color: #1565c0;
         }
 
         .info-text {
             font-size: 14px;
             margin: 10px 0;
+            color: #555;
             text-align: left;
         }
 
         .highlight {
             background-color: #fff3cd;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 15px 0;
             border-left: 4px solid #ffc107;
-        }
-
-        ul {
-            padding-left: 20px;
+            padding: 10px;
             margin: 15px 0;
         }
 
-        li {
-            margin-bottom: 10px;
+        .material-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
         }
 
-        .center-text {
-            text-align: center;
-            font-size: 16px;
+        .material-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 20px;
         }
 
-        .warning {
-            color: #dc3545;
+        .material-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2196f3;
             font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page {
+                padding: 20px;
+            }
+            
+            .step {
+                min-width: 100%;
+                margin: 10px 0;
+            }
+            
+            .btn {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -162,46 +193,49 @@
         <!-- 第一页：首页 -->
         <div id="page1" class="page active">
             <h1>欢迎加入嗨亚！</h1>
+            <p style="text-align: center; font-size: 16px; margin-bottom: 20px;">入职流程办理如下：</p>
             
             <div class="process-container">
                 <div class="process-steps">
                     <div class="step">
                         <div class="step-number">1</div>
-                        <div>扫描花名册二维码</div>
+                        <p>扫描花名册二维码</p>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <div>提交入职材料</div>
+                        <p>提交入职材料</p>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
-                        <div>签署合同</div>
+                        <p>签署合同</p>
                     </div>
                 </div>
-                
-                <button class="btn" onclick="nextPage()">我已知晓，下一步</button>
             </div>
+            
+            <button class="btn" onclick="showPage(2)">我已知晓，下一步</button>
         </div>
 
         <!-- 第二页：填写花名册 -->
         <div id="page2" class="page">
             <h1>一、填写花名册</h1>
             
-            <p class="info-text">点击下方链接填写花名册：</p>
-            <a href="https://f.wps.cn/g/PJKCRIH9?flowT=1770032774095&flowSign=596e198201&flow=flow" target="_blank" class="link">填写花名册</a>
+            <div class="link-container">
+                <p class="info-text">点击下方链接填写花名册</p>
+                <a href="https://f.wps.cn/g/PJKCRIH9?flowT=1770032774095&flowSign=596e198201&flow=flow" 
+                   target="_blank" 
+                   class="custom-link">填写花名册</a>
+            </div>
             
             <div class="highlight">
-                <p class="info-text"><span class="warning">重要提示：</span></p>
-                <ul>
-                    <li>身份证号最后一位为X的，请输入大写的X。</li>
-                    <li>现住址填写具体到门牌号，例如"海南省三亚市天涯区建港新城10栋13楼1305"。</li>
-                    <li>公司发薪银行为交通银行，请提交本人交通银行卡信息，银行卡号请不要用空格隔开。</li>
-                </ul>
+                <p class="info-text"><strong>填写注意事项：</strong></p>
+                <p class="info-text">• 身份证号最后一位为X的，请输入大写的X。</p>
+                <p class="info-text">• 现住址填写具体到门牌号，例如"海南省三亚市天涯区建港新城10栋13楼1305"。</p>
+                <p class="info-text">• 公司发薪银行为交通银行，请提交本人交通银行卡信息，银行卡号请不要用空格隔开。</p>
             </div>
             
             <p class="info-text">花名册内容填写不多，大约3分钟就能填写完成，请您于今日内完成花名册的填写！</p>
             
-            <button class="btn" onclick="nextPage()">已完成填写，下一步</button>
+            <button class="btn" onclick="showPage(3)">已完成填写，下一步</button>
         </div>
 
         <!-- 第三页：准备入职材料 -->
@@ -210,7 +244,7 @@
             
             <p class="info-text">请确认已填写上页花名册信息！若已填写完成，请提前准备以下入职材料，耐心等待通知提交材料的短信。</p>
             
-            <ul>
+            <ul class="material-list">
                 <li>彩色证件照(电子版)</li>
                 <li>学历证书、学信网学历证明,相关职称证件(扫描或拍照)</li>
                 <li>二代身份证原件及其正反面(扫描或拍照)</li>
@@ -221,37 +255,40 @@
             </ul>
             
             <p class="info-text">如有任何疑问欢迎咨询嗨亚24小时智能客户服务助手</p>
-            <a href="https://work.weixin.qq.com/kfid/kfcae366b0c5ada72c" target="_blank" class="link">咨询在线客服</a>
+            
+            <div class="link-container">
+                <a href="https://work.weixin.qq.com/kfid/kfcae366b0c5ada72c" 
+                   target="_blank" 
+                   class="custom-link">咨询在线客服</a>
+            </div>
         </div>
     </div>
 
     <script>
-        function nextPage() {
-            // 获取当前活动页面
+        function showPage(pageNumber) {
+            // 隐藏所有页面
             const pages = document.querySelectorAll('.page');
-            let currentPageIndex = -1;
+            pages.forEach(page => page.classList.remove('active'));
             
-            for (let i = 0; i < pages.length; i++) {
-                if (pages[i].classList.contains('active')) {
-                    currentPageIndex = i;
-                    break;
-                }
-            }
+            // 显示指定页面
+            document.getElementById(`page${pageNumber}`).classList.add('active');
             
-            // 隐藏当前页面
-            pages[currentPageIndex].classList.remove('active');
-            
-            // 显示下一页（如果存在）
-            if (currentPageIndex + 1 < pages.length) {
-                pages[currentPageIndex + 1].classList.add('active');
+            // 如果是从第一页跳转到第二页，滚动到顶部
+            if(pageNumber === 2 || pageNumber === 3) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
         
-        // 初始化页面状态
-        window.onload = function() {
-            // 设置第一页为活跃状态
-            document.getElementById('page1').classList.add('active');
-        };
+        // 监听链接点击事件，当用户从花名册页面返回时可以继续流程
+        document.addEventListener('DOMContentLoaded', function() {
+            const wpsLink = document.querySelector('#page2 .custom-link');
+            if(wpsLink) {
+                wpsLink.addEventListener('click', function() {
+                    // 这里可以添加额外的处理逻辑，比如记录用户行为
+                    console.log('用户点击了花名册链接');
+                });
+            }
+        });
     </script>
 </body>
 </html>
